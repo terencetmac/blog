@@ -1,0 +1,12 @@
+{{> header}}
+    <article>
+      <h1>{{ title }}</h1>
+      <div class="meta">
+        {{#if date}}
+          Published: {{ date }} 
+        {{/if}}
+      </div>
+      {{{ contents }}}
+    </article>
+  </body>
+</html>

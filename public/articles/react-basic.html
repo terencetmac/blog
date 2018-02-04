@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Get started with React in 2017, Part 1 - React Basic [Walk-through] - Terence.XYZ
+    </title>
+    <meta name="description" content="  Self-taught Software Engineer, former business-side Entrepreneur. Just some random thoughts, musings and work. 
+    " />
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="columns">
+        <div class="column col-12 text-center">
+          <h1 style="margin-top: 25px">Terence</h1>
+          <p>Self-taught Software Engineer, former business-side Entrepreneur. Just some random thoughts, musings and work.</p>
+          <!DOCTYPE html>
+          <header class="navbar" style="display: inline-block">
+            <section class="navbar-section">
+              <a href="index.html" class="btn btn-link">home</a>
+              <a href="about.html" class="btn btn-link">about</a>
+              <a href="projects.html" class="btn btn-link">projects</a>
+            </section>
+          </header>
+          <div class="divider"></div>
+        </div>
+    </div>
+    <article>
+      <h1>Get started with React in 2017, Part 1 - React Basic [Walk-through]</h1>
+      <div class="meta">
+          Published: Mon Jun 05 2017 17:00:00 GMT-0700 (PDT) 
+      </div>
+      <p>It&#39;s 2017 and if you haven&#39;t already heard, React is pretty awesome. Unfortunately, it takes a little more effort to get started and become productive.</p>
+<p>If you&#39;re still not convinced, read <a href="https://blog.syncano.io/reactjs-reasons-why-part-1/">this</a>, <a href="https://hackernoon.com/angular-vs-react-the-deal-breaker-7d76c04496bc">this</a> or the many articles <a href="https://risingstars2016.js.org/">discussing JS frameworks</a>.</p>
+<p>My goal is to provide a detailed walk-through for starting your React project from scratch and help you understand why certain components are necessary and how they relate to modern JavaScript application development. </p>
+<p>Whilst there are many other starter projects (<a href="https://github.com/facebookincubator/create-react-app">here</a>, <a href="https://www.reactboilerplate.com/">here</a> and <a href="https://zeit.co/blog/next">here</a>), it can be intimidating to see so many new and unfamiliar technologies and not fully understand why these components are needed.</p>
+<blockquote>
+<p><strong>tl; dr</strong>;<br>This is detailed guide and reference for starting your own React project from scratch.</p>
+<ul>
+<li><a href="https://github.com/terencetmac/ReactBasic">React Basic Github Repo</a></li>
+<li><em>coming up in Part 2 - React Plus</em></li>
+<li><em>coming up in part 3 - React Superpowers</em></li>
+</ul>
+<p>Every section starts with an overview of the steps required, the motivation behind doing it and a detailed explanation of how to do it. </p>
+</blockquote>
+<p>Let&#39;s get started.</p>
+<h2 id="overview">Overview</h2>
+<ol>
+<li><a href="#step1codeversioncontrolwithgit">Code Version Control with Git</a></li>
+<li><a href="#step2initialiseyourprojectasannpmproject">Using NPM for Package Management</a></li>
+<li><a href="#step3installingthebasicpackagesrequiredforreact">Installing the Basic Packages Required for React</a><ul>
+<li>Module Bundling with Webpack</li>
+<li>Install React Core Components</li>
+<li>Install React&#39;s Convenience Packages (ES6 &amp; JSX)</li>
+</ul>
+</li>
+<li><a href="#step4createbasicfoldersandfiles">Create your Project&#39;s Basic Folders and Files
+</a></li>
+<li><a href="#step5helloworldwithreactbasic">Putting it All Together for Hello World!</a></li>
+</ol>
+<h3 id="step-0-create-a-new-folder-for-your-project">Step 0. Create a new Folder for your Project</h3>
+<ol>
+<li><p>Open up your terminal and navigate to a folder where you want to your project to live.</p>
+</li>
+<li><p>Create your project folder and navigate to that folder
+<code>mkdir react-basic</code><br><code>cd react-basic</code></p>
+</li>
+</ol>
+<h3 id="step-1-code-version-control-with-git">Step 1. Code version control with Git</h3>
+<p>In the Terminal from your <code>react-basic</code> folder,</p>
+<ol>
+<li>Initialise a Git Repository
+<code>git init</code>  </li>
+<li>Create a Git ignore file
+<code>touch .gitignore</code></li>
+</ol>
+<p><strong>Why?</strong></p>
+<blockquote>
+<p>From <a href="https://www.atlassian.com/git/tutorials/what-is-version-control">Atlassian</a>, <em>(emphasis mine)</em> </p>
+<p>... help a software team <strong>manage changes to source code over time</strong>. Version control software keeps track of every modification to the code in a special kind of database. If a mistake is made, <strong>developers can turn back the clock and compare earlier versions of the code to help fix the mistake</strong> while minimising disruption to all team members.</p>
+</blockquote>
+<p>Version control is a tenant of modern software development and Git is a great tool for this. If you haven&#39;t been using Git to keep track of your projects, you should start with this one.</p>
+<p>As you write more code for the project, you want to <code>git commit</code> (or check in) these files into the project&#39;s Git repository. This allows you or a fellow developer to easily <code>git clone</code> (or download) your project and contribute to the project. If you host this Git repository online, E.g. in a public Github or Bitbucket repository, anyone who has access to the URL will be able to see your project files.</p>
+<p>But wait, what if your files contain secret information like your database login and 3rd party API keys? How about NPM project files? Should they be the Git repository as well?</p>
+<p>A <code>.gitignore</code> file tells Git not to commit certain files or folders into your git repository. In general, people don&#39;t commit dependencies and config files that contain sensitive information that you don&#39;t want public.</p>
+<p>You can find a sample <code>.gitignore</code> file in any of the React-* repos linked in this article.</p>
+<h3 id="step-2-initialise-your-project-as-an-npm-project-">Step 2. Initialise your project as an NPM project.</h3>
+<ol>
+<li><p>In the Project Root Directory, initialise your NPM project with
+<code>npm init</code> to create a <code>package.json</code> file.</p>
+</li>
+<li><p>Follow the prompts. Any information you enter here can be changed later. The only thing that really matters now is your project name. It cannot contain spaces and must be lowercase.</p>
+</li>
+</ol>
+<p><strong>Why?</strong></p>
+<blockquote>
+<p>From NPM&#39;s website, <em>(emphasis mine)</em><br>... NPM makes it easy for JavaScript developers to <strong>share the code that they&#39;ve created to solve particular problems</strong>, and for other developers <strong>to reuse that code</strong> in their own applications.</p>
+</blockquote>
+<p>NPM is an online package registry for Javascript. It allows you to easily import packages that other people have written to extend the functionality of your own application.</p>
+<p>You&#39;ll often see this in the documentation of plugins published online, with instructions to include the plugin as a script tag from a CDN, install with Bower or install with NPM. Either is fine, but using NPM makes it easier to manage as your application grows.</p>
+<p>For example, to install jQuery, you can use a script tag in your HTML. If you install it via NPM, you&#39;ll do <code>npm install --save jquery</code> instead. So if another developer wants to work on your code base, they can easily use <code>npm install</code> to download all your project&#39;s dependencies, instead of downloading them manually from each project site.</p>
+<p><strong>Note</strong><br>With NPM you can install packages as <strong>dependencies</strong> or <strong>dev dependencies</strong>. For the most part, this isn&#39;t too important now, but in general, if the package is necessary for your application in production, E.g. frameworks like React/Angular etc. then install it as a dependency with <code>npm install --save &lt;package-name&gt;</code>. </p>
+<p>If you only need that package in your development environment, E.g. test runners like Mocha or Jest, save them as dev-dependencies with <code>npm install --save-dev &lt;package-name&gt;</code>.</p>
+<p>If you&#39;re not sure which is the right package, you can search from within the command line with <code>npm search &lt;package-name&gt;</code>.</p>
+<h3 id="step-3-installing-the-basic-packages-required-for-react">Step 3. Installing the Basic Packages Required for React</h3>
+<ol>
+<li><p>Install a module loader, Webpack and Webpack&#39;s dev server
+<code>npm install --save-dev webpack webpack-dev-server</code> </p>
+</li>
+<li><p>Install React&#39;s core modules
+<code>npm install --save react react-dom</code></p>
+</li>
+<li><p>Install React&#39;s convenience modules, used with Webpack<br><code>npm install --save-dev babel-core babel-loader babel-preset-env babel-preset-react</code></p>
+</li>
+</ol>
+<h4 id="1-install-webpack-and-webpack-s-dev-server-as-dev-dependencies-">1. Install Webpack and Webpack&#39;s Dev Server as dev dependencies.</h4>
+<p><code>npm install --save-dev webpack webpack-dev-server</code>  </p>
+<p><strong>Why?</strong><br>Imagine you have 3 components in 3 separate JS files, header.js, sidebar.js and main.js. In order to get these into the browser, you have to add script tags to your HTML file. For example:</p>
+<pre><code>  // An example index.html
+  ...
+    &lt;script src=&quot;js/components/header.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;js/components/sidebar.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;js/components/main.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+  ...
+</code></pre><p>So now it works, all fine and dandy. But what if later on, your header.js file needs something from main.js? Now, this won&#39;t work because main.js is loaded after header.js. Also, what if you had 15 components? Then you&#39;ll have to manually include at least 15 script tags on your page.</p>
+<p>If only there was a way where we can specify a main <code>.js</code> file, step through the code and automatically include the files that are required?</p>
+<p>That&#39;s basically what a module bundler does and we use Webpack. </p>
+<p><strong>Note</strong><br>Many tutorials online use Webpack 1 but Webpack 2 has been released and not everything is backwards compatible. For more, see <a href="https://webpack.js.org/guides/migrating/">here</a>.</p>
+<p>Next, you&#39;ll need some way to serve your files that can be accessed from the browser. In order of ascending difficulty:</p>
+<p>a. Use Python&#39;s SimpleHTTPServer that comes with most Macs
+b. Use Webpack&#39;s Dev Server
+c. Set up a Node server within your project (Use for production apps)</p>
+<p>Options <em>a</em> and <em>b</em> are great options for quickly prototyping something but you should not use them for production applications. Since we&#39;re setting up a simple React application for development, let&#39;s pick one of them.</p>
+<p>Webpack&#39;s Dev Server is the better choice here because it comes with several built-in features that make your development process easier. Read more about it <a href="https://webpack.js.org/configuration/dev-server/">here</a>.</p>
+<p>####2. Install React&#39;s Core Components####
+<code>npm install --save react react-dom</code></p>
+<p>At this point, you can already start to write a basic React application. However, you&#39;ll notice that a bunch of sample code from the docs and many tutorials will not work because they use ES6 and JSX.</p>
+<p>To write ES6 and JSX, you&#39;ll need some way to transpile your code into a format that all browsers understand.</p>
+<p>####3. Install React&#39;s Convenience Packages####
+<code>npm install --save-dev babel-cli babel-core babel-loader babel-preset-env babel-preset-react</code></p>
+<p><strong>a. What&#39;s the fuss about ES6?</strong><br>ES6 (a.k.a. ES2015) is simply the next version of JavaScript, with added features to the language. Unfortunately, not all these new features are supported across all browsers yet. To ensure that our new JS features can run on all browsers, we use Babel to transpile (convert) our code into ES5 (the previous version of JS).</p>
+<p>Now you can use Babel directly to do this, but since we&#39;re using Webpack, we&#39;ll get Webpack to help us do this.</p>
+<p><strong>b. JSX?</strong><br>While we&#39;re at it, React recommends using JSX, which is a flavour of writing JavaScript that allows you to write HTML directly in JavaScript. You don&#39;t have to use JSX to write React apps, but as you will see, makes React components easier to write. Also, because browsers cannot recognise JSX, we will also use Babel to transpile JSX into valid HTML.</p>
+<p>But...</p>
+<ul>
+<li><a href="http://blog.andrewray.me/youre-missing-the-point-of-jsx/">JSX violates the separation of concerns</a> by mixing <a href="http://nayaabkhan.me/react/the-react-philosophy">HTML, CSS and JavaScript</a>!</li>
+<li><a href="https://medium.com/@housecor/react-s-jsx-the-other-side-of-the-coin-2ace7ab62b98">I don&#39;t want to learn a new syntax!</a></li>
+</ul>
+<p>Now that we&#39;re past that, here&#39;s how we get it working. We use Webpack loaders to transpile ES6 and JSX code for us. Above, we installed the required Babel packages (at the time of writing) that work with Webpack.</p>
+<p>At this point, you might be wondering how in the world can one keep track of all these necessary packages. For example, if you visit the plugin page on Babel, you will see this:</p>
+<p><img src="/content/images/2017/06/babel-plugin-page.png" alt=""> <em>Babel plugin documentation, accessed 2 Jun 2017</em></p>
+<p>Unfortunately, in the world of NPM, there really isn&#39;t a simple solution to this. Picking the right package requires a healthy mix of intuition, research and luck. My recommendation is to understand what you need to do, then look directly at the documentation to figure out which package is needed.</p>
+<h3 id="step-4-create-basic-folders-and-files">Step 4. Create Basic Folders and Files</h3>
+<p>Now that we&#39;ve got all the packages we need, we&#39;ll start getting our project folders and files in order. There&#39;s no one right way to organise your folders but here are my basic considerations.</p>
+<ul>
+<li><p><strong>Public or Distribution folder</strong> for assets that will be served from. Static HTML, CSS, Images and JS files that are served to the public will reside here.</p>
+</li>
+<li><p><strong>Source folder</strong> for all your development files. Here is where you will do most of your development.
+```
+// An example project</p>
+</li>
+</ul>
+<p>/ (project root)
+  /dist
+    index.html
+    /css
+    /js
+    /img
+  /src
+    /components &lt;-- React components can go here</p>
+<pre><code>
+### Step 5. Hello World with React Basic ###
+Let&#39;s briefly revisit what we&#39;ve done and our goal for today. We&#39;ve installed Webpack, React and Babel&#39;s Webpack plugins and we&#39;re ready to go. By the end of this tutorial, we should have a basic Hello World React application.
+
+The general idea as we build our app is as follows:
+
+1. We create new `.js` files for React Components inside the source   directory (/src)
+2. Webpack will watch our source directory for changes to any files inside
+3. When files change, Webpack will start from the entry file `index.js`, go through every `import` statement and bundle these files together in the correct order
+4. It will then output a `bundle.js` file in our designated output directory (/dist/js)
+5. In order for Webpack to be able to process ES6 and JSX properly, we need to ensure we&#39;re using the Babel preset packages that we installed
+6. We can then visit our app at our localhost address to see changes
+
+Let&#39;s start putting everything together.
+
+####1. Setup Webpack&#39;s Configuration####
+######a. Create webpack.config.js file in your project&#39;s root directory######
+`touch webpack.config.js`
+
+######b. Setup basic Webpack Config
+</code></pre><p>// webpack.config.js</p>
+<p>  // Require Node&#39;s path module
+  var path = require(&#39;path&#39;);</p>
+<p>  module.exports = {
+    // Define an entry file for Webpack to Start
+    entry: &#39;./src/index.js&#39;,</p>
+<pre><code>output: {
+  // Name your output file
+  filename: &#39;bundle.js&#39;,
+  // Tell Webpack what directory to put it in. E.g. &#39;/dist/js&#39;
+  path: path.resolve(__dirname, &#39;dist&#39;),
+  publicPath: &#39;/js/&#39;
+}
+</code></pre><p>  }</p>
+<pre><code>######c. Setup Babel&#39;s ES6 &amp; JSX loaders in Webpack
+</code></pre><p>// webpack.config.js
+  ...
+  output: { ...
+  },</p>
+<p>  module: {
+    rules: [
+      {
+        // Tell Webpack to apply the loader to files that match
+        // this regular expression
+        test: /.(js|jsx)$/, 
+        // but skip these files/folders
+        exclude: /node_modules/, 
+        // using this specific loader
+        loader: &#39;babel-loader&#39;
+      }
+    ]
+  }
+  ...</p>
+<pre><code>######d. Configure Babel&#39;s presets
+
+1. Create a `.babelrc` file. In your project&#39;s root directory,
+`touch .babelrc`
+
+2. Configure Babel&#39;s presets for JSX (react) and ES6 (env)
+</code></pre><p>// .babelrc
+  {
+    &quot;presets&quot;: [&quot;env&quot;, &quot;react&quot;]
+  }</p>
+<pre><code>
+######e. Create your application&#39;s index.html
+1. In /dist, create an `index.html` file. 
+I like to use a basic HTML5 template like the one [here](https://www.sitepoint.com/a-basic-html5-template/).
+
+2. Update the script reference to your bundle.js file as follows.
+</code></pre><p>// index.html
+  ...
+  <body>
+    <div id="app"></div>    </p>
+<pre><code>&lt;script src=&quot;js/bundle.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>  </body>
+  ...</p>
+<pre><code>
+######f. Create your first React component, a.k.a your entry file defined in Webpack&#39;s configuration
+1. Create an `index.js` file in your project&#39;s /src directory
+`touch src/index.js` from your project root.
+
+```language-javascript
+// src/index.js
+  import React, { Component } from &#39;react&#39;;
+  import ReactDOM from &#39;react-dom&#39;;
+
+  class App extends Component {
+    constructor() {
+      super();
+    }
+    render() {
+      return (
+        &lt;h1&gt;Hello World!&lt;/h1&gt;
+      )
+    }
+  }
+
+  ReactDOM.render(
+    &lt;App /&gt;, // The name of the component as defined above
+    document.getElementById(&#39;app&#39;) // ID of the root DOM element in index.html where React should render the app
+  );
+</code></pre><p>We&#39;re almost done, but you might be wondering how you can see this page in the browser to verify that it is working correctly. To start Webpack&#39;s Dev Server, in the Terminal from your project&#39;s root directory, run 
+<code>node_modules/webpack-dev-server/bin/webpack-dev-server.js --open --content-base dist/</code></p>
+<p>or if you have previously installed Webpack&#39;s Dev Server globally with <code>-g</code>, <code>webpack-dev-server --open -content-base dist/</code></p>
+<ul>
+<li>--open opens the url in default browser</li>
+<li>--content-base dist/ serves files in the dist/ directory </li>
+</ul>
+<p>You can verify that everything is working by pointing your browser to <code>http://localhost:8080</code> and you should see your Hello World! application.</p>
+<p>######f. One last thing...
+So every time you want to get your application running, you have to start your server by running webpack-dev-server. But this command is a little too long for my liking. To make it easier for ourselves, NPM comes with a feature called Scripts, which allow you to write simple shortcuts that will run commands in the terminal.</p>
+<p>To do this, open up your package.json file and type the following:</p>
+<pre><code>// package.json
+  ...
+  &quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;webpack-dev-server --open --content-base dist/&quot;
+  }
+  ...
+</code></pre><p>Now, everytime you want to start your dev server, all you need to do is run <code>npm run dev</code> in the terminal. You&#39;ll notice that &quot;dev&quot; corresponds to the key we set in &quot;scripts&quot;. You can set any key and run the commands defined accordingly with <code>npm run &lt;script key&gt;</code>.</p>
+<p>Phew, we&#39;re done! Almost, kind of, mostly. What&#39;s next? Writing the rest of your application. </p>
+<p>My goal was to help you understand why and what we need to do to in order to get a React application up. If there&#39;s still anything that&#39;s unclear you would like me to explain, let me know.</p>
+<p>You can also get a copy of the React Basic project from the Github Repo. Instructions on how to use it can be found in the Readme.</p>
+<p>As mentioned at the beginning of the article (that seems like a long time ago), I mentioned that React has a learning curve before writing your first line of application code, but after you get the hang of how to get up your project, you&#39;ll begin to uncover the endless potential of the React ecosystem.</p>
+<p>If you have any questions or comments, feel free to contact me via Twitter <a href="https://twitter.com/terencetmac">@terencetmac</a></p>
+<p>Till the next time! </p>
+<h3 id="-upcoming-"><em>Upcoming</em></h3>
+<ol>
+<li>React Plus (With Linting and Testing)</li>
+<li>React with Superpowers (React Router, Redux and more...)</li>
+</ol>
+
+    </article>
+  </body>
+</html>

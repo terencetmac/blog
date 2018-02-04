@@ -1,0 +1,16 @@
+{{>header}}
+    <ul class="recent">
+    {{#each articles }}
+      <li>
+        <div class="title">
+          <a href="{{ paths.dir }}/{{ paths.base }}">
+            {{ title }}
+          </a>
+        </div>
+        <div class="date">{{ date }}</div>
+        <p>{{ blurb }}</p>
+      </li>
+    {{/each}}
+    </ul>
+
+{{>footer}}

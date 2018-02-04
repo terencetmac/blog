@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Terence.XYZ
+    </title>
+    <meta name="description" content="  Self-taught Software Engineer, former business-side Entrepreneur. Just some random thoughts, musings and work. 
+    " />
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="columns">
+        <div class="column col-12 text-center">
+          <h1 style="margin-top: 25px">Terence</h1>
+          <p>Self-taught Software Engineer, former business-side Entrepreneur. Just some random thoughts, musings and work.</p>
+          <!DOCTYPE html>
+          <header class="navbar" style="display: inline-block">
+            <section class="navbar-section">
+              <a href="/" class="btn btn-link">home</a>
+              <a href="/about" class="btn btn-link">about</a>
+              <a href="/projects" class="btn btn-link">projects</a>
+            </section>
+          </header>
+          <div class="divider"></div>
+        </div>
+    </div>
+    <article>
+      <h1></h1>
+      <div class="meta">
+      </div>
+      <h1 id="journey-to-vim">Journey to Vim</h1>
+<p>So for the longest time I&#39;ve always wanted to learn Vim. I spent a couple of weekends trying out Vim Adventures and
+watching random Vim tutorial videos but could never quite understand and get into it. Finally I decided to bite the
+bullet and commit to using Vim on the weekends, with a goal of making it my daily driver at work.</p>
+<p>Right now I&#39;ve got a basic setup which works for small projects and I&#39;m barely scraping the surface for Vim
+customizations and functionality. I&#39;ve decided to write down some of the lessons I&#39;ve learnt as a reminder for myself in
+a couple of weeks when I forget everything and hopefully it&#39;ll help someone out there get started on their on Vim
+journey.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>When you do a Google search for &#39;getting started in vim&#39;, you&#39;ll see a ton of tutorials and discussions on every aspect
+of Vim, and given its flexibility, these discussions are hardly helpful for someone getting started. If you&#39;ve never
+done any research on Vim, I definitely suggest looking over how Vim works and its different modes. </p>
+<p>But if you&#39;re already up to speed, here are some of the early decisions I had to make.</p>
+<h3 id="macvim-vs-terminal-vim">MacVim vs. Terminal Vim</h3>
+<p>You can run Vim as a standalone app in macOS or in any standard Terminal. Personally I liked the idea of being able to
+SSH into any remote server and hack away so I decided to use Vim in a terminal. Whilst there are benefits of either,
+it&#39;s unlikely that you&#39;ll appreciate these differences until you actually write code with Vim, so pick one and moving to
+the other will be easy.</p>
+<h3 id="build-your-own-vimrc-file-vs-using-a-pre-built-one">Build your own vimrc file vs using a pre-built one</h3>
+<p>There are many pre-built Vim configuration (vimrc) files that you can just download and use. Some popular ones include
+<a href="https://github.com/carlhuda/janus">Janus</a> and <a href="https://github.com/spf13/spf13-vim">spf13</a>. There are also many wonder
+people who have shared their lovingly crafted and well documented Vim configuration files. These are great resources to
+learn about the many many ways you can configure Vim.</p>
+<p>For me, I find that the best and easiest way to get started is to configure your own. Putting together your own
+configuration gives you an appreciation of the hard work that goes into creating modern text editors like Sublime Text
+(ST), VSCode and Atom. It also gives you a small sandbox to help practice basic text editing commands in Vim before jumping
+into writing code, got to walk before you can run! Needless to say, I expect that you&#39;ll customise your .vimrc file in
+Vim and not in another text editor.</p>
+<h3 id="plugins">Plugins</h3>
+<p>Vim does not come with the niceties that we&#39;ve come to expect in a modern text editor out of the box. Many of these
+features come in the form of Plugins. But anyone who has dealt with using software packages knows the downside of having
+to manage these packages, the biggest of which is the sheer number of options. It&#39;s too easy to get overwhelmed at this
+step, but I took a practical approach to Plugins.</p>
+<h3 id="key-bindings">Key Bindings</h3>
+<p>One of Vim&#39;s most attractive features is its mouseless approach, having key combinations to for everything you could
+possibly do in the editor and more. There&#39;s almost an expectation for every Vim user to customise every single key bind
+to suit their individual needs, and while Vim is certainly capable of letting you do that, it is by no means necessary.
+I&#39;ve taken a customize-only-when-the-need-arises and sensible-defaults approach to this.</p>
+<h2 id="diving-into-it">Diving into it</h2>
+<p>So I&#39;m going to share my approach so far with Vim. I&#39;ve been using Sublime Text (ST) for the past 5 years so that&#39;s provided
+me with a benchmark of productivity looks like. My goal is just to hotswap Vim for Sublime at some point in the future.</p>
+<h3 id="step-1-list-down-important-features-in-your-current-editor-that-you-cannot-live-without">Step 1 - List down important features in your current editor that you cannot live without</h3>
+<p>You probably aren&#39;t using every single feature available in your current editor, so configuring Vim for parity with what
+you&#39;re used to won&#39;t be too difficult. The goal is to pick out the minimal number of features to get you comfortable. Here are some of mine:</p>
+<ul>
+<li><strong>Folder/File browser</strong> - for navigating my project files</li>
+<li><strong>Syntax highlighting</strong></li>
+<li><strong>Fuzzy Path Finding</strong> - for quickly navigating to files. In ST, typing CMD+T opens a file finder that makes
+navigating to a specific file a breeze.</li>
+<li><strong>Plugin Management</strong> - ST&#39;s Package Control makes adding new packages really simple, in Vim it&#39;s even more crucial.</li>
+</ul>
+<h3 id="step-2-pick-a-plugin-manager">Step 2 - Pick a Plugin Manager</h3>
+<p>There are several good options out there, but again you won&#39;t be able to tell which is better until you actually use
+them. Some common ones include <a href="https://github.com/tpope/vim-pathogen">Pathogen</a> and 
+<a href="https://github.com/VundleVim/Vundle.vim">Vundle</a> but personally I use <a href="https://github.com/junegunn/vim-plug">vim-plug</a>.</p>
+<h3 id="step-3-do-some-research-on-common-plugins-for-the-features-you-listed-in-step-1">Step 3 - Do some research on common plugins for the features you listed in Step 1</h3>
+<p>You can&#39;t run away from spending hours upon hours researching and customizing Vim, but that&#39;s half the fun. For me, I
+used the following:</p>
+<ul>
+<li><strong>Folder/File browser</strong> - <a href="https://github.com/scrooloose/nerdtree">NerdTree</a></li>
+<li><strong>Syntax highlighting</strong> - <a href="https://github.com/vim-syntastic/syntastic">Syntastic</a></li>
+<li><strong>Fuzzy Path Finding</strong> - <a href="https://github.com/ctrlpvim/ctrlp.vim">CtrlP</a></li>
+<li><strong>Plugin Management</strong> - Vim Plug (linked above)</li>
+</ul>
+<h3 id="step-4-customise-your-plugins-based-on-what-you-re-used-to">Step 4 - Customise your Plugins based on what you&#39;re used to</h3>
+<p>You&#39;re (hopefully) already using keyboard shortcuts daily in your preferred text editor. A good starting point will be
+to map your most commonly used shortcuts to the plugin&#39;s features. For example, here are some of mine:</p>
+<ul>
+<li><p><strong>NerdTree</strong></p>
+<pre><code>// &lt;Ctrl&gt; + k + b to pull out the sidebar, same as ST
+nmap &lt;C-k&gt;&lt;C-b&gt; :NERDTreeToggle&lt;CR&gt;
+</code></pre></li>
+<li><p><strong>CtrlP</strong></p>
+<pre><code>// &lt;Ctrl&gt; + t to pull up the menu
+nmap &lt;C-t&gt; :CtrlP&lt;CR&gt;
+</code></pre></li>
+</ul>
+<p>Hopefully this helps you get started with your own Vim adventures. I&#39;ve barely started my own journey, but I&#39;m excited
+at the progress and possibilities ahead. I&#39;ve also linked my .vimrc file, please feel free to reference any settings
+that make sense for you. I hope to spend more time with Vim and report back with new and exciting things.</p>
+
+    </article>
+  </body>
+</html>

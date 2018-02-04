@@ -6,6 +6,7 @@ const handlebars = require('handlebars');
 const jstransformer = require('metalsmith-jstransformer');
 const paths = require('metalsmith-paths');
 const discoverPartials = require('metalsmith-discover-partials');
+const permalinks = require('metalsmith-permalinks');
 
 metalsmith(__dirname)
   .metadata({
@@ -30,14 +31,20 @@ metalsmith(__dirname)
   .use(paths({
     property: 'paths'
   }))
+  .use(permalinks({
+    relative: false,
+    pattern: ':title'
+  }))
+  .use(function(item) {
+    console.log(item);
+    return item;
+  })
   .use(layouts({
     engine: 'handlebars',
     default: 'article.hbs',
     directory: './layouts',
     pattern: '**/*html'
   }))
-  //.use(function(item){
-    //console.log(item)})
   .build(function(err) {
     if (err) {
       console.log(err);

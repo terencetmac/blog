@@ -6,4 +6,4 @@ blurb: 'Moving my Ghost blog to a Static Site'
 
 ## Hello World
 
-This is an article
+First post in 2018, migrating my Ghost blog to a static site.

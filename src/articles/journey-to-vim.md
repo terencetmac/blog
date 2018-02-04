@@ -1,7 +1,6 @@
 ---
 title: 'Journey to Vim'
-date: 2018-02-03
-blurp: 'In 2018, I want to make Vim my daily driver for programming and writing. Here's my story'
+date: 2018-02-04
 ---
 
 # Journey to Vim

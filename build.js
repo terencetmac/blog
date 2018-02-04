@@ -27,6 +27,10 @@ metalsmith(__dirname)
       reverse: true
     }
   }))
+  .use(function(item) {
+    console.log(item);
+    return item;
+  })
   .use(markdown())
   .use(paths({
     property: 'paths'
@@ -35,10 +39,6 @@ metalsmith(__dirname)
     relative: false,
     pattern: ':title'
   }))
-  .use(function(item) {
-    console.log(item);
-    return item;
-  })
   .use(layouts({
     engine: 'handlebars',
     default: 'article.hbs',
